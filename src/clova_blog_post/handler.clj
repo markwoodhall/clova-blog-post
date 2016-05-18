@@ -3,6 +3,7 @@
             [compojure.route :as route]
             [compojure.handler :as handler]
             [clova.core :as clova]
+            [clova-blog-post.validation :refer [to-do-validation]]
             [ring.util.response :refer [response]]
             [ring.middleware.json :refer [wrap-json-response wrap-json-params]]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
@@ -26,13 +27,8 @@
        :status 204}
       (handler request))))
 
-(def to-do-validation (clova/validation-set [:title clova/required? clova/stringy? [clova/shorter? 255]
-                                             :date clova/required? clova/date?
-                                             [:meta :category] clova/stringy? [clova/shorter? 255]]))
-
 (defroutes app-routes
   (POST "/to-do" [payload]
-        (println payload)
         (let [validated (clova/validate to-do-validation payload)]
           (if (:valid? validated)
             {:body payload :status 200}
