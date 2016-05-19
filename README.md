@@ -1,19 +1,3 @@
 # clova-blog-post
 
-FIXME
-
-## Prerequisites
-
-You will need [Leiningen][] 2.0.0 or above installed.
-
-[leiningen]: https://github.com/technomancy/leiningen
-
-## Running
-
-To start a web server for the application, run:
-
-    lein ring server
-
-## License
-
-Copyright © 2016 FIXME
+The code to accompany [unifying validation logic across the client and server using clojure and clova](http://markwoodhall.com/2016/05/16/unifying-validation-logic-across-the-client-and-server-using-clojure-and-clova/)
